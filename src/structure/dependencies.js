@@ -24,7 +24,7 @@ const exposed = [
 
     // server
     'babel-resolver@1.1.0',
-    'git+ssh://git@bitbucket.org:vgtf/cnn-server#v1.1.0'
+    'git+ssh://git@github.com:cnnlabs/cnn-server'
 ];
 
 
