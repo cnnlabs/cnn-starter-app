@@ -1,0 +1,71 @@
+.header {
+    background: #262626;
+    display: flex;
+    height: 60px;
+    width: 100%;
+
+    @media (max-width: 500px) {
+        display: block;
+        height: auto;
+    }
+}
+
+.brand {
+    background-color: #262626;
+    background-image: url('data:image/svg+xml;utf8,<svg id="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 53.54 53.54"><g id="_Group_" data-name="&lt;Group&gt;"><rect id="_Path_" width="53.54" height="53.54" style="fill:#c80000"/><g id="_Group_2"><path id="_Path_2" d="M10.85,26.77a4.08,4.08,0,0,1,4.08-4.08H18V20.37H14.91a6.4,6.4,0,1,0,0,12.8h6a0.65,0.65,0,0,0,.61-0.61V20.71a1.39,1.39,0,0,1,1-1.37,1.53,1.53,0,0,1,1.74.83L28,26.64l3.63,6.26a0.65,0.65,0,0,0,.7.41,0.47,0.47,0,0,0,.34-0.48V20.71a1.39,1.39,0,0,1,1-1.37,1.53,1.53,0,0,1,1.73.83l3.48,6,3.9,6.73a0.65,0.65,0,0,0,.7.41,0.47,0.47,0,0,0,.34-0.48V17.13H41.55v9.34l-4.05-7C35,15.32,30.38,17,30.38,20.64v5.83l-4.05-7c-2.46-4.18-7.11-2.45-7.11,1.15V30.2a0.64,0.64,0,0,1-.64.65H14.93A4.08,4.08,0,0,1,10.85,26.77Z" style="fill:#fff"/><path id="_Path_3" d="M44.79,17.13v15.7a1.38,1.38,0,0,1-1.38,1.42A1.59,1.59,0,0,1,42,33.37l-3.91-6.74-3.48-6A0.65,0.65,0,0,0,34,20.23a0.47,0.47,0,0,0-.33.48V32.83a1.39,1.39,0,0,1-1,1.37,1.53,1.53,0,0,1-1.74-.83L27.24,27.1l-3.75-6.46a0.65,0.65,0,0,0-.7-0.41,0.47,0.47,0,0,0-.34.48V32.56a1.57,1.57,0,0,1-1.53,1.53h-6a7.32,7.32,0,1,1,0-14.65H18V17.13H14.91a9.64,9.64,0,1,0,0,19.28H21a3.5,3.5,0,0,0,3.79-3.85v-5.5l4.05,7c2.46,4.18,7.11,2.45,7.11-1.15V27.06L40,34c2.46,4.18,7.11,2.45,7.11-1.15V17.13H44.79Z" style="fill:#fff"/></g></g></svg>');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: block;
+    height: 60px;
+    width: 60px;
+
+    @media (max-width: 500px) {
+        background-position: left center;
+        background-size: auto 100%;
+        width: 100%;
+    }
+}
+
+.nav {
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+
+    @media (max-width: 500px) {
+        background-color: #f2f2f2;
+        display: block;
+        overflow: auto;
+        white-space: nowrap;
+        width: 100%;
+    }
+}
+
+.link {
+    color: #fefefe;
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 100;
+    height: 100%;
+    line-height: 60px;
+    padding: 0 1.2rem;
+    transition: background-color .2s;
+
+    &.active,
+    &:hover {
+        background-color: #404040;
+    }
+
+    @media (max-width: 500px) {
+        color: #404040;
+        display: inline-block;
+        line-height: 1;
+        padding: 0.694rem 1.2rem;
+
+        &.active,
+        &:hover {
+            background: #e6e6e6;
+        }
+    }
+}
