@@ -17,7 +17,7 @@ const paths = {
 module.exports = {
     // @TODO: find a way to get this working a little better
     // https://webpack.js.org/configuration/devtool/
-    // devtool: 'source-map',
+    devtool: 'source-map',
     entry: {
         main: [
             // @TODO if this is a web-application use these, else...
