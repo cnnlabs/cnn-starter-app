@@ -52,21 +52,12 @@ module.exports = {
                     {
                         loader: 'css-loader',
                         options: {
-                           localIdentName: '[hash:8]',
-                           modules: true
+                            importLoaders: 1,
+                            localIdentName: '[name]__[local]__[hash:base64:5]',
+                            modules: true
                         }
                     },
-                    {
-                        loader: 'postcss-loader',
-                        options: {
-                            plugins: function () {
-                                return [
-                                    require('postcss-import'),
-                                    require('postcss-cssnext')
-                                ]
-                            }
-                        }
-                    }
+                    'postcss-loader'
                 ]
             },
             // babel transpiler
