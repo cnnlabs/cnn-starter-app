@@ -50,7 +50,7 @@ module.exports = {
                         'node_modules',
                         'cnn-birdman',
                         'src',
-                        '.eslintrc-react'
+                        '.eslintrc'
                     )
                 }
             },
