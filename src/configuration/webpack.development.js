@@ -52,6 +52,15 @@ module.exports = {
                 exclude: /node_modules/,
                 // https://github.com/MoOx/eslint-loader
                 loader: 'eslint-loader'
+                options: {
+                    configFile: resolve(
+                        process.cwd(),
+                        'node_modules',
+                        'cnn-birdman',
+                        'src',
+                        '.eslintrc-react'
+                    )
+                }
             },
             // styles
             {
