@@ -45,13 +45,10 @@ module.exports = {
                 exclude: /node_modules/,
                 loader: 'eslint-loader',
                 options: {
-                    configFile: resolve(
-                        process.cwd(),
-                        'node_modules',
-                        'cnn-birdman',
-                        'src',
-                        '.eslintrc'
-                    )
+                    baseConfig: {
+                        extends: [require.resolve('eslint-config-cnn-starter-app')]
+                    },
+                    useEslintrc: false
                 }
             },
             {
