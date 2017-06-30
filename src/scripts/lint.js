@@ -2,9 +2,9 @@
 
 const { spawn } = require('child_process');
 
-process.env.NODE_ENV = 'test';
-
-const command = 'jest';
-const args = [];
+const command = 'cnn-birdman';
+const args = [
+    'run'
+];
 
 const child = spawn(command, args, { stdio: 'inherit' });

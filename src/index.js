@@ -28,7 +28,11 @@ const scripts = [
         value: 'start'
     },
     {
-        label: 'Runs test suite along with linter.',
+        label: 'Lints javascript and style files.',
+        value: 'lint'
+    },
+    {
+        label: 'Runs unit tests.',
         value: 'test'
     }
 ];
