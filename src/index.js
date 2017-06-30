@@ -122,6 +122,11 @@ function updatePackageJSON(root, callback) {
         }
         return acc;
     }, {});
+    packageJSON.jest = {
+        moduleNameMapper: {
+            '\\.css$': 'identity-obj-proxy'
+        }
+    };
 
     // Path to write the file to.
     const file = path.join(root, 'package.json');
