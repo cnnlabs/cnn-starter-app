@@ -53,13 +53,10 @@ module.exports = {
                 // https://github.com/MoOx/eslint-loader
                 loader: 'eslint-loader'
                 options: {
-                    configFile: resolve(
-                        process.cwd(),
-                        'node_modules',
-                        'cnn-birdman',
-                        'src',
-                        '.eslintrc'
-                    )
+                    baseConfig: {
+                        extends: [require.resolve('eslint-config-cnn-starter-app')]
+                    },
+                    useEslintrc: false
                 }
             },
             // styles
