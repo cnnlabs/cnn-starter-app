@@ -122,15 +122,18 @@ function updatePackageJSON(root, callback) {
         }
         return acc;
     }, {});
+    packageJSON.jest = {
+        moduleNameMapper: {
+            '\\.css$': 'identity-obj-proxy'
+        }
+    };
 
     // Path to write the file to.
     const file = path.join(root, 'package.json');
-    // @TODO: switch to use fse.writeJSON? Making this step moot.
-    const data = JSON.stringify(packageJSON, null, 2);
     // Inform the user whats going on
     log.info(chalk.gray(`- Updating package.json.`));
     // Update the file
-    fse.writeFile(file, data, callback);
+    fse.writeJson(file, packageJSON, { spaces: 2 }, callback);
 }
 
 function renameNPMIgnore(root, callback) {
