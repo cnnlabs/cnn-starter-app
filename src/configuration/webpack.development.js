@@ -19,6 +19,7 @@ module.exports = {
     devtool: 'eval-cheap-module-source-map',
     entry: {
         main: [
+            'babel-polyfill',
             // @TODO if this is a web-application use these, else...
             // activate HMR for React
             'react-hot-loader/patch',
