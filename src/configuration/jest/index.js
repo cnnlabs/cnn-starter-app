@@ -10,7 +10,6 @@
  */
 const createJestConfig = (resolve, rootDir) => ({
     rootDir,
-    testEnvironment: 'node',
     transform: {
         '^.+\\.(js|jsx)$': resolve('configuration/jest/babelTransform')
     },
