@@ -5,7 +5,7 @@ import React, { Component, PropTypes } from 'react';
  * ```
  * <Route
  *      path='/test'
- *      component={(props) => (<AsyncRoute props={props} loadingPromise={System.import('./path/to/page/component')} />)}
+ *      component={(props) => (<AsyncRoute props={props} loadingPromise={import('./path/to/page/component')} />)}
  * />
  * ```
  */
