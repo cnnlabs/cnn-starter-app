@@ -16,7 +16,7 @@ const paths = {
 module.exports = {
     // @TODO: find a way to get this working a little better
     // https://webpack.js.org/configuration/devtool/
-    devtool: 'eval-cheap-module-source-map',
+    devtool: 'cheap-module-eval-source-map',
     entry: {
         main: [
             'babel-polyfill',
