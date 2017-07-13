@@ -1,6 +1,6 @@
 {
   "name": "cnn-starter-app",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Template for creating CNN App projects.",
   "private": true,
   "license": "Apache-2.0",
@@ -13,6 +13,7 @@
     "assets-webpack-plugin": "3.5.1",
     "babel-core": "6.24.1",
     "babel-loader": "7.0.0",
+    "babel-polyfill": "6.23.0",
     "babel-preset-cnn-starter-app": "https://github.com/cnnlabs/babel-preset-cnn-starter-app.git",
     "chalk": "1.1.3",
     "cli-table": "0.3.1",

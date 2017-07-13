@@ -20,6 +20,7 @@ module.exports = {
     devtool: 'source-map',
     entry: {
         main: [
+            'babel-polyfill',
             // @TODO if this is a web-application use these, else...
             // activate HMR for React
             // 'react-hot-loader/patch',
