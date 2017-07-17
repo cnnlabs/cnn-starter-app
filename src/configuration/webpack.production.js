@@ -5,13 +5,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AssetsPlugin = require('assets-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const pkg = require(join(process.cwd(), 'package.json'));
+const basename = pkg.basename || '';
 
 // @TODO: break this out into a separate file
 const paths = {
     appEntry: 'src/index.js',
     appRoot: 'src',
     output: 'dist',
-    publicPath: '/static/',
+    publicPath: `${basename}/static/`,
     htmlPath: 'src/index.html'
 };
 
