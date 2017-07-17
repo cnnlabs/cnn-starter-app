@@ -3,13 +3,15 @@ const resolve = require('path').resolve;
 const join = require('path').join;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AssetsPlugin = require('assets-webpack-plugin');
+const pkg = require(resolve(process.cwd(), 'package.json'));
+const basename = pkg.basename || '';
 
 // @TODO: break this out into a separate file
 const paths = {
     appEntry: 'src/index.js',
     appRoot: 'src',
     output: 'dist',
-    publicPath: '/static/',
+    publicPath: `${basename}/static/`,
     htmlPath: 'src/index.html'
 };
 
@@ -34,7 +36,7 @@ module.exports = {
         // the output path
         path: resolve(process.cwd(), paths.output),
         // necessary for HMR to know where to load the hot update chunks
-        publicPath: resolve(process.cwd(), paths.publicPath)
+        publicPath: paths.publicPath
     },
     module: {
         rules: [

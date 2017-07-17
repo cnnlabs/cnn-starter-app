@@ -4,6 +4,7 @@ const join = require('path').join;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AssetsPlugin = require('assets-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const pkg = require(join(process.cwd(), 'package.json'));
 
 // @TODO: break this out into a separate file
 const paths = {
@@ -35,7 +36,7 @@ module.exports = {
         // the output path
         path: resolve(process.cwd(), paths.output),
         // necessary for HMR to know where to load the hot update chunks
-        publicPath: resolve(process.cwd(), paths.publicPath)
+        publicPath: paths.publicPath
     },
     module: {
         rules: [
