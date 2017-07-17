@@ -35,7 +35,7 @@ module.exports = {
         // the output path
         path: resolve(process.cwd(), paths.output),
         // necessary for HMR to know where to load the hot update chunks
-        publicPath: paths.publicPath
+        publicPath: resolve(process.cwd(), paths.publicPath)
     },
     module: {
         rules: [
