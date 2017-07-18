@@ -4,14 +4,14 @@ const join = require('path').join;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AssetsPlugin = require('assets-webpack-plugin');
 const pkg = require(resolve(process.cwd(), 'package.json'));
-const basename = pkg.basename || '';
+const publicPath = pkg.basename || '/static/';
 
 // @TODO: break this out into a separate file
 const paths = {
     appEntry: 'src/index.js',
     appRoot: 'src',
     output: 'dist',
-    publicPath: `${basename}/static/`,
+    publicPath,
     htmlPath: 'src/index.html'
 };
 
