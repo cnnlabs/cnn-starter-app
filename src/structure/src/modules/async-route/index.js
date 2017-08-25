@@ -21,11 +21,24 @@ class AsyncRoute extends Component {
         isLoaded: false
     };
 
+    constructor(props) {
+        super(props);
+        this.loaded = this.loaded.bind(this);
+    }
+
     componentDidMount() {
         this.props.loadingPromise.then((module) => {
             this.component = module.default;
-            this.setState({ isLoaded: true });
+            this.loaded();
         });
+    }
+
+    componentWillUnmount() {
+        this.loaded = () => {};
+    }
+
+    loaded() {
+        this.setState({ isLoaded: true });
     }
 
     render() {
