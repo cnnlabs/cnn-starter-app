@@ -15,7 +15,8 @@ const createJestConfig = (resolve, rootDir) => ({
     },
     moduleNameMapper: {
         '^.+\\.css$': 'identity-obj-proxy'
-    }
+    },
+    moduleDirectories: [ 'node_modules', 'src' ]
 });
 
 module.exports = createJestConfig;
