@@ -4,6 +4,7 @@ const join = require('path').join;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AssetsPlugin = require('assets-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const filteredClientEnvVars = require('./client-env-vars.js')();
 
 // @TODO: break this out into a separate file
 const paths = {
@@ -82,9 +83,7 @@ module.exports = {
     },
     plugins: [
         // define environment variables
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('production')
-        }),
+        new webpack.DefinePlugin(filteredClientEnvVars),
         // extract css content
         new ExtractTextPlugin({
             filename: '[name].[contenthash].css',

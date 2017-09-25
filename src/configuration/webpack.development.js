@@ -3,6 +3,7 @@ const resolve = require('path').resolve;
 const join = require('path').join;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AssetsPlugin = require('assets-webpack-plugin');
+const filteredClientEnvVars = require('./client-env-vars.js')();
 
 // @TODO: break this out into a separate file
 const paths = {
@@ -105,9 +106,7 @@ module.exports = {
     plugins: [
         // define environment variables
         // https://webpack.js.org/plugins/define-plugin/
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('development')
-        }),
+        new webpack.DefinePlugin(filteredClientEnvVars),
         // enable HMR globally
         // https://webpack.js.org/plugins/hot-module-replacement-plugin/
         new webpack.HotModuleReplacementPlugin(),
