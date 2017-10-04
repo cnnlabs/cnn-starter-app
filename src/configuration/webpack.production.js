@@ -18,7 +18,7 @@ const paths = {
 module.exports = {
     // @TODO: find a way to get this working a little better
     // https://webpack.js.org/configuration/devtool/
-    devtool: 'source-map',
+    // devtool: 'source-map',
     entry: {
         main: [
             'babel-polyfill',
@@ -82,6 +82,9 @@ module.exports = {
         ]
     },
     plugins: [
+        // optimize momentjs
+        // https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
+        new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en/),
         // define environment variables
         new webpack.DefinePlugin(filteredClientEnvVars),
         // extract css content
