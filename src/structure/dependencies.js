@@ -25,7 +25,7 @@ const exposed = [
     // server
     'babel-resolver@1.1.0',
     "babel-register@6.24.1",
-    'https://github.com/cnnlabs/cnn-server'
+    'https://github.com/cnnlabs/cnn-server#0.3.0'
 ];
 
 
