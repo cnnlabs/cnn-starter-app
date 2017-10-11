@@ -5,6 +5,7 @@ const AssetsPlugin = require('assets-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const pkg = require(resolve(process.cwd(), 'package.json'));
 const publicPath = pkg.publicPath || '/static/';
+const filteredClientEnvVars = require('./client-env-vars.js')();
 
 // @TODO: break this out into a separate file
 const paths = {
@@ -21,6 +22,7 @@ module.exports = {
     devtool: 'source-map',
     entry: {
         main: [
+            'babel-polyfill',
             // @TODO if this is a web-application use these, else...
             // activate HMR for React
             // 'react-hot-loader/patch',
@@ -82,9 +84,7 @@ module.exports = {
     },
     plugins: [
         // define environment variables
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('production')
-        }),
+        new webpack.DefinePlugin(filteredClientEnvVars),
         // extract css content
         new ExtractTextPlugin({
             filename: '[name].[contenthash].css',

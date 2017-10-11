@@ -1,18 +1,20 @@
 #!/usr/bin/env node
 
-const chalk = require('chalk');
-const resolve = require('path').resolve;
-const spawn = require('child_process').spawn;
-
-const log = console;
+const jest = require('jest');
+const { resolve } = require('path');
+const argv = process.argv.slice(2);
+const createJestConfig = require('../configuration/jest');
 
 process.env.NODE_ENV = 'test';
 
-log.info(chalk.yellow('Unit / e2e testing coming soon.'));
+argv.push(
+    '--config',
+    JSON.stringify(
+        createJestConfig(
+            path => resolve(__dirname, '..', path),
+            resolve(process.cwd())
+        )
+    )
+);
 
-const command = 'cnn-birdman';
-const args = [
-    'run'
-];
-
-const child = spawn(command, args, { stdio: 'inherit' });
+jest.run(argv);

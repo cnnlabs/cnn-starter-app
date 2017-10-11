@@ -28,7 +28,11 @@ const scripts = [
         value: 'start'
     },
     {
-        label: 'Runs test suite along with linter.',
+        label: 'Lints javascript and style files.',
+        value: 'lint'
+    },
+    {
+        label: 'Runs unit tests.',
         value: 'test'
     }
 ];
@@ -121,12 +125,10 @@ function updatePackageJSON(root, callback) {
 
     // Path to write the file to.
     const file = path.join(root, 'package.json');
-    // @TODO: switch to use fse.writeJSON? Making this step moot.
-    const data = JSON.stringify(packageJSON, null, 2);
     // Inform the user whats going on
     log.info(chalk.gray(`- Updating package.json.`));
     // Update the file
-    fse.writeFile(file, data, callback);
+    fse.writeJson(file, packageJSON, { spaces: 2 }, callback);
 }
 
 function renameNPMIgnore(root, callback) {
