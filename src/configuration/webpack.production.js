@@ -18,15 +18,12 @@ const paths = {
 module.exports = {
     // @TODO: find a way to get this working a little better
     // https://webpack.js.org/configuration/devtool/
-    devtool: 'source-map',
+    // @TODO: removing sourcemaps for produciton until our
+    // build pipeline omits them automatically.
+    // devtool: 'source-map',
     entry: {
         main: [
             'babel-polyfill',
-            // @TODO if this is a web-application use these, else...
-            // activate HMR for React
-            // 'react-hot-loader/patch',
-            // // enable hot reloading
-            // 'webpack-hot-middleware/client?reload=true',
             // the entry point of our root
             resolve(process.cwd(), paths.appEntry)
         ]
@@ -47,13 +44,17 @@ module.exports = {
                     fallback: 'style-loader',
                     use: [
                         {
+                            // https://github.com/webpack-contrib/css-loader
                             loader: 'css-loader',
                             options: {
-                               localIdentName: '[hash:8]',
-                               modules: true
+                                // Configure the generated ident
+                                localIdentName: '[hash:8]',
+                                // Enable/Disable CSS Modules
+                                modules: true
                             }
                         },
                         {
+                            // https://github.com/postcss/postcss-loader
                             loader: 'postcss-loader',
                             options: {
                                 plugins: function () {
@@ -69,20 +70,23 @@ module.exports = {
             },
             // babel transpiler
             {
-                test: /\.js$/,
+                test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
+                // https://github.com/babel/babel-loader
                 loader: 'babel-loader'
             },
             // html files
             // this is currently only used for the HtmlWebpackPlugin
             {
                 test: /\.html$/,
+                // https://github.com/webpack-contrib/html-loader
                 use: ['html-loader']
             }
         ]
     },
     plugins: [
         // define environment variables
+        // https://webpack.js.org/plugins/define-plugin/
         new webpack.DefinePlugin(filteredClientEnvVars),
         // extract css content
         new ExtractTextPlugin({
@@ -118,6 +122,11 @@ module.exports = {
         })
     ],
     resolve: {
+        // resolve certain extensions
+        // https://webpack.js.org/configuration/resolve/#resolve-extensions
+        extensions: ['.js', '.jsx', '.json'],
+        // tells webpack where to look for modules
+        // https://webpack.js.org/configuration/resolve/#resolve-modules
         modules: [
             resolve(process.cwd(), paths.appRoot),
             'node_modules'
