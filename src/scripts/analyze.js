@@ -6,6 +6,9 @@ const resolve = require('path').resolve;
 
 const log = console;
 
+// Set the environment to production.
+process.env.NODE_ENV = 'production';
+
 function viewAnalysis(callback) {
     const command = 'webpack-bundle-analyzer';
     const args = ['stats.json'];
