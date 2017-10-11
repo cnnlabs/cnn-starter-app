@@ -109,6 +109,8 @@ module.exports = {
             filename: 'assets.json',
             path: join(process.cwd(), 'dist')
         }),
+        // https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
+        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
         // @TODO: UglifyJsPlugin?
         // injects webpack bundles into our html file
         new HtmlWebpackPlugin({
