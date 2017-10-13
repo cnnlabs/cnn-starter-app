@@ -1,9 +1,10 @@
 const webpack = require('webpack');
-const resolve = require('path').resolve;
-const join = require('path').join;
+const { join, resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AssetsPlugin = require('assets-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const pkg = require(resolve(process.cwd(), 'package.json'));
+const publicPath = pkg.publicPath || '/static/';
 const filteredClientEnvVars = require('./client-env-vars.js')();
 
 // @TODO: break this out into a separate file
@@ -11,22 +12,19 @@ const paths = {
     appEntry: 'src/index.js',
     appRoot: 'src',
     output: 'dist',
-    publicPath: '/static/',
+    publicPath,
     htmlPath: 'src/index.html'
 };
 
 module.exports = {
     // @TODO: find a way to get this working a little better
     // https://webpack.js.org/configuration/devtool/
-    devtool: 'source-map',
+    // @TODO: removing sourcemaps for produciton until our
+    // build pipeline omits them automatically.
+    // devtool: 'source-map',
     entry: {
         main: [
             'babel-polyfill',
-            // @TODO if this is a web-application use these, else...
-            // activate HMR for React
-            // 'react-hot-loader/patch',
-            // // enable hot reloading
-            // 'webpack-hot-middleware/client?reload=true',
             // the entry point of our root
             resolve(process.cwd(), paths.appEntry)
         ]
@@ -47,13 +45,17 @@ module.exports = {
                     fallback: 'style-loader',
                     use: [
                         {
+                            // https://github.com/webpack-contrib/css-loader
                             loader: 'css-loader',
                             options: {
-                               localIdentName: '[hash:8]',
-                               modules: true
+                                // Configure the generated ident
+                                localIdentName: '[hash:8]',
+                                // Enable/Disable CSS Modules
+                                modules: true
                             }
                         },
                         {
+                            // https://github.com/postcss/postcss-loader
                             loader: 'postcss-loader',
                             options: {
                                 plugins: function () {
@@ -69,20 +71,23 @@ module.exports = {
             },
             // babel transpiler
             {
-                test: /\.js$/,
+                test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
+                // https://github.com/babel/babel-loader
                 loader: 'babel-loader'
             },
             // html files
             // this is currently only used for the HtmlWebpackPlugin
             {
                 test: /\.html$/,
+                // https://github.com/webpack-contrib/html-loader
                 use: ['html-loader']
             }
         ]
     },
     plugins: [
         // define environment variables
+        // https://webpack.js.org/plugins/define-plugin/
         new webpack.DefinePlugin(filteredClientEnvVars),
         // extract css content
         new ExtractTextPlugin({
@@ -109,6 +114,8 @@ module.exports = {
             filename: 'assets.json',
             path: join(process.cwd(), 'dist')
         }),
+        // https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
+        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
         // @TODO: UglifyJsPlugin?
         // injects webpack bundles into our html file
         new HtmlWebpackPlugin({
@@ -116,6 +123,11 @@ module.exports = {
         })
     ],
     resolve: {
+        // resolve certain extensions
+        // https://webpack.js.org/configuration/resolve/#resolve-extensions
+        extensions: ['.js', '.jsx', '.json'],
+        // tells webpack where to look for modules
+        // https://webpack.js.org/configuration/resolve/#resolve-modules
         modules: [
             resolve(process.cwd(), paths.appRoot),
             'node_modules'
