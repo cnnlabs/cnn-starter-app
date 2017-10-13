@@ -67,9 +67,11 @@ module.exports = {
                             // Number of loaders applied before CSS loader
                             importLoaders: 1,
                             // Configure the generated ident
-                            localIdentName: '[hash:8]',
+                            localIdentName: '[name]__[local]___[hash:8]',
                             // Enable/Disable CSS Modules
-                            modules: true
+                            modules: true,
+                            // Enable source maps
+                            sourceMap: true
                         }
                     },
                     {
