@@ -1,9 +1,10 @@
 const webpack = require('webpack');
-const resolve = require('path').resolve;
-const join = require('path').join;
+const { join, resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AssetsPlugin = require('assets-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const pkg = require(resolve(process.cwd(), 'package.json'));
+const publicPath = pkg.publicPath || '/static/';
 const filteredClientEnvVars = require('./client-env-vars.js')();
 
 // @TODO: break this out into a separate file
@@ -11,7 +12,7 @@ const paths = {
     appEntry: 'src/index.js',
     appRoot: 'src',
     output: 'dist',
-    publicPath: '/static/',
+    publicPath,
     htmlPath: 'src/index.html'
 };
 
