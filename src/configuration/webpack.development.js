@@ -51,13 +51,14 @@ module.exports = {
                 // @TODO: add eslintPath, never assume global
                 enforce: 'pre',
                 test: /\.(js|jsx)$/,
-                exclude: /node_modules/,
+                include: resolve(process.cwd(), paths.appRoot),
                 // https://github.com/MoOx/eslint-loader
                 loader: 'eslint-loader'
             },
             // styles
             {
                 test: /\.css$/,
+                include: resolve(process.cwd(), paths.appRoot),
                 use: [
                     // https://github.com/webpack-contrib/style-loader
                     'style-loader',
@@ -89,11 +90,16 @@ module.exports = {
                     }
                 ]
             },
+            {
+                test: /\.css$/,
+                include: /(node_modules|cnn-modules)/,
+                use: ['style-loader', 'css-loader']
+            },
             // transpilation
             {
                 // @TODO: when we remove the ability to extend babelrc, update this
                 test: /\.(js|jsx)$/,
-                exclude: /node_modules/,
+                include: resolve(process.cwd(), paths.appRoot),
                 // https://github.com/babel/babel-loader
                 loader: 'babel-loader'
             },

@@ -72,7 +72,7 @@ module.exports = {
             // babel transpiler
             {
                 test: /\.(js|jsx)$/,
-                exclude: /node_modules/,
+                include: resolve(process.cwd(), paths.appRoot),
                 // https://github.com/babel/babel-loader
                 loader: 'babel-loader'
             },
