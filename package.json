@@ -1,6 +1,6 @@
 {
   "name": "cnn-starter-app",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Template for creating CNN App projects.",
   "private": true,
   "license": "Apache-2.0",
