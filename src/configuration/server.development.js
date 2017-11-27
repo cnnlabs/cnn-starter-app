@@ -3,6 +3,7 @@ const resolve = require('path').resolve;
 
 let webpackConfig = require('./webpack.development.js');
 const override = resolve(process.cwd(), 'webpack.development.js');
+const log = console;
 
 try {
     webpackConfig = require(override);

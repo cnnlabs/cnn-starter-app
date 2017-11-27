@@ -6,7 +6,7 @@ const resolve = require('path').resolve;
 const spawn = require('child_process').spawn;
 
 // @TODO: Fix this -- add ability to pass in args
-const argv = process.argv
+// const argv = process.argv
 
 const log = console;
 
@@ -41,7 +41,6 @@ function determineConfig(callback) {
     log.info(chalk.gray('- Checking which webpack config to use.'));
 
     try {
-        const test = require(override);
         config = override;
     } catch (e) {
         // no override configuration found
@@ -60,7 +59,7 @@ function clean(dir, callback) {
     })
 }
 
-(function init(){
+(function init() {
     const step4 = () => { log.info(chalk.green('\n✔ All done!')) };
     const step3 = build.bind(null, step4);
     const step2 = determineConfig.bind(null, step3);

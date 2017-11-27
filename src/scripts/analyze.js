@@ -9,7 +9,7 @@ const log = console;
 // Set the environment to production.
 process.env.NODE_ENV = 'production';
 
-function viewAnalysis(callback) {
+function viewAnalysis() {
     const command = 'webpack-bundle-analyzer';
     const args = ['stats.json'];
 
@@ -30,12 +30,12 @@ function runAnalysis(callback) {
         // capture profile of the application, including stats and hints
         '--profile',
         // output json
-        '--json', '>', 'stats.json',
+        '--json', '>', 'stats.json'
     ].join(' ');
     // Inform the user whats going on
     log.info('Running webpack analysis...');
     // Kick off the process
-    exec(command, (err, stdout, stderr) => {
+    exec(command, (err) => {
         if (err) {
             log.error(`Error running analysis, failed with code: ${err.code}`);
             process.exit(1);

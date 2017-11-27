@@ -54,7 +54,7 @@ if (process.env.NODE_ENV === 'production') {
         routes: [
             {
                 path: '*',
-                handler: !!process.env.DISABLE_SSR ? handleStatic : handleSSR
+                handler: process.env.DISABLE_SSR ? handleStatic : handleSSR
             }
         ]
     };

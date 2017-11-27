@@ -2,9 +2,7 @@
 
 const path = require('path');
 const spawn = require('child_process').spawn;
-const execSync = require('child_process').execSync;
 const fse = require('fs-extra');
-const inquirer = require('inquirer');
 const chalk = require('chalk');
 const Table = require('cli-table');
 
@@ -38,7 +36,6 @@ const scripts = [
 ];
 
 function onCompletion(root) {
-    const spacer = '  ';
     const text = chalk.gray;
     const success = chalk.green;
 
@@ -126,7 +123,7 @@ function updatePackageJSON(root, callback) {
     // Path to write the file to.
     const file = path.join(root, 'package.json');
     // Inform the user whats going on
-    log.info(chalk.gray(`- Updating package.json.`));
+    log.info(chalk.gray('- Updating package.json.'));
     // Update the file
     fse.writeJson(file, packageJSON, { spaces: 2 }, callback);
 }
@@ -151,7 +148,7 @@ function copyTemplateFiles(root, type, callback) {
     // Destination: project-root/src
     const dest = path.join(root);
     // Inform the user whats going on
-    log.info(chalk.gray(`- Copying template files.`));
+    log.info(chalk.gray('- Copying template files.'));
     // Copy the files
     fse.copy(src, dest, callback);
 }
