@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Creates a configuration object to control Jest's behavior.
  *
