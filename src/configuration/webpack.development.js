@@ -54,6 +54,12 @@ module.exports = {
                 include: resolve(process.cwd(), paths.appRoot),
                 // https://github.com/MoOx/eslint-loader
                 loader: 'eslint-loader'
+                options: {
+                    baseConfig: {
+                        extends: [require.resolve('eslint-config-cnn-starter-app')]
+                    },
+                    useEslintrc: false
+                }
             },
             // styles
             {
