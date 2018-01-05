@@ -39,7 +39,7 @@
     "style-loader": "0.16.1",
     "webpack": "3.10.0",
     "webpack-bundle-analyzer": "2.4.0",
-    "webpack-dev-middleware": "2.0.2",
+    "webpack-dev-middleware": "2.0.3",
     "webpack-hot-middleware": "2.18.0"
   },
   "peerDependencies": {
