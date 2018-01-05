@@ -41,9 +41,5 @@
     "webpack-bundle-analyzer": "2.4.0",
     "webpack-dev-middleware": "2.0.3",
     "webpack-hot-middleware": "2.18.0"
-  },
-  "peerDependencies": {
-    "jest": "20.0.4",
-    "webpack": "3.10.0"
   }
 }
