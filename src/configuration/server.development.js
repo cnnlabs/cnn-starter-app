@@ -6,8 +6,12 @@ const override = resolve(process.cwd(), 'webpack.development.js');
 
 try {
     webpackConfig = require(override);
-} catch (e) {
-    // no override configuration found
+} catch (err) {
+    if (err.code === 'MODULE_NOT_FOUND') {
+        console.log(`No override configuration found at ${override}. Using built-in config.`);
+    } else {
+        throw err;
+    }
 }
 
 const compiler = webpack(webpackConfig);
