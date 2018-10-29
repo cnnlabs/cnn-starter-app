@@ -1,5 +1,7 @@
 'use strict';
 
+const fs = require('fs');
+
 /**
  * Creates a configuration object to control Jest's behavior.
  *
@@ -8,15 +10,21 @@
  * @param {String}   rootDir    The root directory for the tests
  * @return {Object}             The Jest configuration object
  */
-const createJestConfig = (resolve, rootDir) => ({
-    rootDir,
-    transform: {
-        '^.+\\.(js|jsx)$': resolve('configuration/jest/babelTransform')
-    },
-    moduleNameMapper: {
-        '^.+\\.css$': 'identity-obj-proxy'
-    },
-    moduleDirectories: [ 'node_modules', 'src' ]
-});
+const createJestConfig = (resolve, rootDir) => {
+    const setupFileName = `${rootDir}/src/setupTests.js`;
+    const setupFile = fs.existsSync(setupFileName) ? setupFileName : undefined;
+
+    return {
+        rootDir,
+        transform: {
+            '^.+\\.(js|jsx)$': resolve('configuration/jest/babelTransform')
+        },
+        moduleNameMapper: {
+            '^.+\\.css$': 'identity-obj-proxy'
+        },
+        moduleDirectories: ['node_modules', 'src'],
+        setupTestFrameworkScriptFile: setupFile
+    };
+};
 
 module.exports = createJestConfig;
