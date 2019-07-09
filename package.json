@@ -40,6 +40,12 @@
     "webpack": "3.10.0",
     "webpack-bundle-analyzer": "2.4.0",
     "webpack-dev-middleware": "2.0.3",
-    "webpack-hot-middleware": "2.18.0"
-  }
+    "webpack-hot-middleware": "2.18.0",
+    "snyk": "^1.192.4"
+  },
+  "scripts": {
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
+  },
+  "snyk": true
 }
