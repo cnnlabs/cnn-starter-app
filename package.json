@@ -19,7 +19,7 @@
     "cli-table": "0.3.1",
     "cnn-birdman": "https://github.com/cnnlabs/cnn-birdman.git#0.1.0",
     "cnn-react-generators": "https://github.com/cnnlabs/cnn-react-generators.git#0.1.0",
-    "css-loader": "0.28.0",
+    "css-loader": "1.0.0",
     "enzyme": "2.9.1",
     "eslint-loader": "1.7.1",
     "extract-text-webpack-plugin": "3.0.2",
